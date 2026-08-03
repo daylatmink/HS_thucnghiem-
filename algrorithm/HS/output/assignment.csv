@@ -1,0 +1,2 @@
+﻿taskId,resourceId,plannedStartHour,plannedEndHour,durationHours,totalScore,feasible
+TASK_API_001,RES_BACKEND_01,0.0,24.0,24.0,45.0,True

@@ -1,0 +1,2 @@
+kpiCode,kpiName,description,unit,formula,category,dataType,minValue,maxValue,higherIsBetter
+PROJECT_COMPLETION,Project completion,Weighted task completion adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true

@@ -1,0 +1,587 @@
+{
+  "best": {
+    "assignment": {
+      "TASK_1": "RES_4",
+      "TASK_2": "RES_3",
+      "TASK_3": "RES_4",
+      "TASK_4": "RES_4",
+      "TASK_5": "RES_2",
+      "TASK_6": "RES_1",
+      "TASK_7": "RES_3",
+      "TASK_8": "RES_2",
+      "TASK_9": "RES_5",
+      "TASK_10": "RES_6",
+      "TASK_11": "RES_3",
+      "TASK_12": "RES_2",
+      "TASK_13": "RES_3",
+      "TASK_14": "RES_5",
+      "TASK_15": "RES_3"
+    },
+    "score": {
+      "totalScore": 88.85,
+      "kpiScore": 100.0,
+      "skillScore": 100.0,
+      "workloadScore": 67.85,
+      "costScore": 68.87,
+      "scheduleScore": 100.0,
+      "feasible": true,
+      "hardViolations": [],
+      "diagnostics": {
+        "resourceLoads": {
+          "RES_1": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 33.0,
+            "assignedTasksCount": 1.0,
+            "utilizationRate": 36.67
+          },
+          "RES_2": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 87.0,
+            "assignedTasksCount": 3.0,
+            "utilizationRate": 96.67
+          },
+          "RES_3": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 74.0,
+            "assignedTasksCount": 5.0,
+            "utilizationRate": 82.22
+          },
+          "RES_4": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 71.0,
+            "assignedTasksCount": 3.0,
+            "utilizationRate": 78.89
+          },
+          "RES_5": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 40.0,
+            "assignedTasksCount": 2.0,
+            "utilizationRate": 44.44
+          },
+          "RES_6": {
+            "capacity": 90.0,
+            "currentLoad": 0.0,
+            "allocated": 16.0,
+            "assignedTasksCount": 1.0,
+            "utilizationRate": 17.78
+          }
+        },
+        "estimatedKpis": {
+          "PROJECT_COMPLETION": 100.00004999999996,
+          "Q0_DELIVERY_COMPLETION": 100.0,
+          "Q2_DELIVERY_COMPLETION": 100.0,
+          "Q3_DELIVERY_COMPLETION": 100.0,
+          "Q4_DELIVERY_COMPLETION": 99.99999,
+          "Q5_DELIVERY_COMPLETION": 100.0,
+          "Q7_DELIVERY_COMPLETION": 100.0,
+          "Q8_DELIVERY_COMPLETION": 100.0
+        },
+        "totalCost": 12086.5
+      }
+    }
+  },
+  "topCandidates": [
+    {
+      "assignment": {
+        "TASK_1": "RES_4",
+        "TASK_2": "RES_3",
+        "TASK_3": "RES_4",
+        "TASK_4": "RES_4",
+        "TASK_5": "RES_2",
+        "TASK_6": "RES_1",
+        "TASK_7": "RES_3",
+        "TASK_8": "RES_2",
+        "TASK_9": "RES_5",
+        "TASK_10": "RES_6",
+        "TASK_11": "RES_3",
+        "TASK_12": "RES_2",
+        "TASK_13": "RES_3",
+        "TASK_14": "RES_5",
+        "TASK_15": "RES_3"
+      },
+      "score": {
+        "totalScore": 88.85,
+        "kpiScore": 100.0,
+        "skillScore": 100.0,
+        "workloadScore": 67.85,
+        "costScore": 68.87,
+        "scheduleScore": 100.0,
+        "feasible": true,
+        "hardViolations": [],
+        "diagnostics": {
+          "resourceLoads": {
+            "RES_1": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 33.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 36.67
+            },
+            "RES_2": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 87.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 96.67
+            },
+            "RES_3": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 74.0,
+              "assignedTasksCount": 5.0,
+              "utilizationRate": 82.22
+            },
+            "RES_4": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 71.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 78.89
+            },
+            "RES_5": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 40.0,
+              "assignedTasksCount": 2.0,
+              "utilizationRate": 44.44
+            },
+            "RES_6": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 16.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 17.78
+            }
+          },
+          "estimatedKpis": {
+            "PROJECT_COMPLETION": 100.00004999999996,
+            "Q0_DELIVERY_COMPLETION": 100.0,
+            "Q2_DELIVERY_COMPLETION": 100.0,
+            "Q3_DELIVERY_COMPLETION": 100.0,
+            "Q4_DELIVERY_COMPLETION": 99.99999,
+            "Q5_DELIVERY_COMPLETION": 100.0,
+            "Q7_DELIVERY_COMPLETION": 100.0,
+            "Q8_DELIVERY_COMPLETION": 100.0
+          },
+          "totalCost": 12086.5
+        }
+      }
+    },
+    {
+      "assignment": {
+        "TASK_1": "RES_4",
+        "TASK_2": "RES_3",
+        "TASK_3": "RES_4",
+        "TASK_4": "RES_4",
+        "TASK_5": "RES_2",
+        "TASK_6": "RES_1",
+        "TASK_7": "RES_3",
+        "TASK_8": "RES_2",
+        "TASK_9": "RES_5",
+        "TASK_10": "RES_6",
+        "TASK_11": "RES_3",
+        "TASK_12": "RES_2",
+        "TASK_13": "RES_3",
+        "TASK_14": "RES_5",
+        "TASK_15": "RES_3"
+      },
+      "score": {
+        "totalScore": 88.85,
+        "kpiScore": 100.0,
+        "skillScore": 100.0,
+        "workloadScore": 67.85,
+        "costScore": 68.87,
+        "scheduleScore": 100.0,
+        "feasible": true,
+        "hardViolations": [],
+        "diagnostics": {
+          "resourceLoads": {
+            "RES_1": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 33.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 36.67
+            },
+            "RES_2": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 87.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 96.67
+            },
+            "RES_3": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 74.0,
+              "assignedTasksCount": 5.0,
+              "utilizationRate": 82.22
+            },
+            "RES_4": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 71.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 78.89
+            },
+            "RES_5": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 40.0,
+              "assignedTasksCount": 2.0,
+              "utilizationRate": 44.44
+            },
+            "RES_6": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 16.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 17.78
+            }
+          },
+          "estimatedKpis": {
+            "PROJECT_COMPLETION": 100.00004999999996,
+            "Q0_DELIVERY_COMPLETION": 100.0,
+            "Q2_DELIVERY_COMPLETION": 100.0,
+            "Q3_DELIVERY_COMPLETION": 100.0,
+            "Q4_DELIVERY_COMPLETION": 99.99999,
+            "Q5_DELIVERY_COMPLETION": 100.0,
+            "Q7_DELIVERY_COMPLETION": 100.0,
+            "Q8_DELIVERY_COMPLETION": 100.0
+          },
+          "totalCost": 12086.5
+        }
+      }
+    },
+    {
+      "assignment": {
+        "TASK_1": "RES_4",
+        "TASK_2": "RES_3",
+        "TASK_3": "RES_4",
+        "TASK_4": "RES_4",
+        "TASK_5": "RES_2",
+        "TASK_6": "RES_1",
+        "TASK_7": "RES_3",
+        "TASK_8": "RES_2",
+        "TASK_9": "RES_5",
+        "TASK_10": "RES_6",
+        "TASK_11": "RES_3",
+        "TASK_12": "RES_2",
+        "TASK_13": "RES_3",
+        "TASK_14": "RES_5",
+        "TASK_15": "RES_3"
+      },
+      "score": {
+        "totalScore": 88.85,
+        "kpiScore": 100.0,
+        "skillScore": 100.0,
+        "workloadScore": 67.85,
+        "costScore": 68.87,
+        "scheduleScore": 100.0,
+        "feasible": true,
+        "hardViolations": [],
+        "diagnostics": {
+          "resourceLoads": {
+            "RES_1": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 33.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 36.67
+            },
+            "RES_2": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 87.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 96.67
+            },
+            "RES_3": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 74.0,
+              "assignedTasksCount": 5.0,
+              "utilizationRate": 82.22
+            },
+            "RES_4": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 71.0,
+              "assignedTasksCount": 3.0,
+              "utilizationRate": 78.89
+            },
+            "RES_5": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 40.0,
+              "assignedTasksCount": 2.0,
+              "utilizationRate": 44.44
+            },
+            "RES_6": {
+              "capacity": 90.0,
+              "currentLoad": 0.0,
+              "allocated": 16.0,
+              "assignedTasksCount": 1.0,
+              "utilizationRate": 17.78
+            }
+          },
+          "estimatedKpis": {
+            "PROJECT_COMPLETION": 100.00004999999996,
+            "Q0_DELIVERY_COMPLETION": 100.0,
+            "Q2_DELIVERY_COMPLETION": 100.0,
+            "Q3_DELIVERY_COMPLETION": 100.0,
+            "Q4_DELIVERY_COMPLETION": 99.99999,
+            "Q5_DELIVERY_COMPLETION": 100.0,
+            "Q7_DELIVERY_COMPLETION": 100.0,
+            "Q8_DELIVERY_COMPLETION": 100.0
+          },
+          "totalCost": 12086.5
+        }
+      }
+    }
+  ],
+  "history": [
+    {
+      "iteration": 1,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 64.74,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 2,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 69.07,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 3,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 36.29,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 4,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 70.12,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 5,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 69.39,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 6,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 64.78,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 7,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 68.37,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 8,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 69.62,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 9,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 77.65,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 10,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 63.45,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 11,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 68.57,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 12,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 75.52,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 13,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 66.25,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 14,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 73.64,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 15,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 74.78,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 16,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 56.92,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 17,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 73.46,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 18,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 67.78,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 19,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 70.67,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 20,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 60.08,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 21,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 62.88,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 22,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 76.28,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 23,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 74.74,
+      "currentFeasible": true,
+      "violations": 0
+    },
+    {
+      "iteration": 24,
+      "bestScore": 88.85,
+      "bestFeasible": true,
+      "currentScore": 73.75,
+      "currentFeasible": true,
+      "violations": 0
+    }
+  ],
+  "iterationsRun": 25,
+  "converged": true,
+  "startedAt": "2026-07-29T17:23:23.856117+00:00",
+  "finishedAt": "2026-07-29T17:23:23.892931+00:00",
+  "scheduleMetadata": {
+    "hasCycle": false,
+    "criticalPath": [
+      "TASK_14"
+    ],
+    "cycleStart": "2026-04-01T00:00:00+00:00",
+    "predecessors": {
+      "TASK_1": [],
+      "TASK_2": [],
+      "TASK_3": [
+        "TASK_2"
+      ],
+      "TASK_4": [
+        "TASK_2"
+      ],
+      "TASK_5": [],
+      "TASK_6": [],
+      "TASK_7": [
+        "TASK_6"
+      ],
+      "TASK_8": [],
+      "TASK_9": [
+        "TASK_7"
+      ],
+      "TASK_10": [
+        "TASK_1",
+        "TASK_4",
+        "TASK_9"
+      ],
+      "TASK_11": [],
+      "TASK_12": [],
+      "TASK_13": [
+        "TASK_7",
+        "TASK_9"
+      ],
+      "TASK_14": [
+        "TASK_10"
+      ],
+      "TASK_15": []
+    }
+  }
+}

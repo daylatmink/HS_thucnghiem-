@@ -1,0 +1,2 @@
+resourceId,resourceName,resourceType,capacity,skills,currentLoad,availabilityFrom,availabilityTo,availableHours,costPerHour
+RES_BACKEND_01,Nguyen Van A,HUMAN,160,"FASTAPI:SENIOR, MONGODB:MID",40,2026-04-01,2026-06-30,160,60

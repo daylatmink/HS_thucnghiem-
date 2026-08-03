@@ -1,0 +1,4 @@
+resourceId,resourceName,resourceType,capacity,skills,currentLoad,availabilityFrom,availabilityTo,availableHours,costPerHour
+RES_1,MSRCPSP Resource 1,HUMAN,120,"Q1:1, Q2:2",0,2026-04-01,2026-04-30,120,56.0
+RES_2,MSRCPSP Resource 2,HUMAN,120,"Q2:3, Q0:2",0,2026-04-01,2026-04-30,120,53.6
+RES_3,MSRCPSP Resource 3,HUMAN,120,"Q0:2, Q1:1",0,2026-04-01,2026-04-30,120,28.9

@@ -1,0 +1,2 @@
+kpiCode,kpiName,description,unit,formula,category,dataType,minValue,maxValue,higherIsBetter
+KPI_2026_01_GOLIVE,Golive thang 01/2026,Do ty le hoan thanh task,PERCENT,completed_tasks / total_tasks * 100,DELIVERY,NUMERIC,0,100,true

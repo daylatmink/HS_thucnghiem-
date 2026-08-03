@@ -1,0 +1,2 @@
+kpiCode,targetValue,priority,weight,warningThreshold,criticalThreshold,appliesToType,appliesToTeamId,appliesToTeamName
+PROJECT_COMPLETION,100,HIGH,1,80,60,PROJECT,MSRCPSP_10_3_5_3,MSRCPSP Small 10_3_5_3

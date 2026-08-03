@@ -1,0 +1,2 @@
+scenarioId,scenarioName,taskCode,resourceId,allocatedHours,startDate,simulationProfile,simulationDepth,monteCarloIterations,includeRisks
+SC_ACTUAL_PTSP_001,Phuong an baseline,TASK_API_001,EMP_030,16,2026-04-01,MONTE_CARLO_SIMULATION,5,1000,true

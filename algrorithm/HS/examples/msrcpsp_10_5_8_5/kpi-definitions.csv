@@ -1,0 +1,6 @@
+kpiCode,kpiName,description,unit,formula,category,dataType,minValue,maxValue,higherIsBetter
+PROJECT_COMPLETION,Project completion,Weighted delivery completion for all tasks adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true
+Q1_DELIVERY_COMPLETION,Q1 delivery completion,Weighted delivery completion for tasks requiring Q1 adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true
+Q2_DELIVERY_COMPLETION,Q2 delivery completion,Weighted delivery completion for tasks requiring Q2 adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true
+Q3_DELIVERY_COMPLETION,Q3 delivery completion,Weighted delivery completion for tasks requiring Q3 adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true
+Q4_DELIVERY_COMPLETION,Q4 delivery completion,Weighted delivery completion for tasks requiring Q4 adjusted by skill fit,PERCENT,sum(task impact * target * skill_factor),DELIVERY,NUMERIC,0,100,true

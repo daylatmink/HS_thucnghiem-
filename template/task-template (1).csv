@@ -1,0 +1,2 @@
+taskCode,taskName,description,estimatedHours,deadline,priority,dependencies,requiredSkills,kpiImpacts
+TASK_API_001,Hoan thien API KPI definitions,Hoan thien API dinh nghia KPI,24,2026-05-20,HIGH,,"SOFTWARE_DEVELOPMENT, API_DESIGN","PROGRESS_RATE:0.5, QUALITY_SCORE:0.5"

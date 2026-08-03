@@ -1,0 +1,2 @@
+kpiCode,targetValue,priority,weight,warningThreshold,criticalThreshold,appliesToType,appliesToTeamId,appliesToTeamName
+KPI_2026_01_GOLIVE,100,HIGH,1,80,70,TEAM,PTSP_TEAM,Product Team

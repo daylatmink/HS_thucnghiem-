@@ -1,0 +1,6 @@
+﻿"resourceId","resourceName","resourceType","capacity","skills","currentLoad","availabilityFrom","availabilityTo","availableHours","costPerHour"
+"RES_1","MSRCPSP Resource 1","HUMAN","445","Q2:2, Q4:2, Q3:1, Q8:2, Q1:2, Q6:2","0","2026-04-01","2026-04-30","445","16.4"
+"RES_2","MSRCPSP Resource 2","HUMAN","445","Q2:3, Q4:3, Q8:3, Q1:1, Q3:3, Q6:3","0","2026-04-01","2026-04-30","445","15.7"
+"RES_3","MSRCPSP Resource 3","HUMAN","445","Q1:3, Q0:3, Q7:1, Q5:2, Q6:1, Q3:2","0","2026-04-01","2026-04-30","445","27.3"
+"RES_4","MSRCPSP Resource 4","HUMAN","445","Q2:3, Q1:2, Q4:2, Q3:1, Q0:2, Q6:3","0","2026-04-01","2026-04-30","445","34.0"
+"RES_5","MSRCPSP Resource 5","HUMAN","445","Q0:1, Q2:2, Q3:3, Q1:3, Q8:3, Q6:1","0","2026-04-01","2026-04-30","445","14.1"
