@@ -1,0 +1,18 @@
+{
+  "expectedAlgorithms": 7,
+  "expectedDatasets": 16,
+  "expectedSeeds": 30,
+  "expectedRawRows": 3360,
+  "actualRawRows": 3360,
+  "actualHistoryRows": 726647,
+  "duplicateRows": 0,
+  "missingRows": 0,
+  "nfeViolations": 0,
+  "invalidScores": 0,
+  "hardConstraintViolations": 0,
+  "infeasibleRows": 0,
+  "historyCounterDecreases": 0,
+  "historyNfeGtBudget": 0,
+  "historyBestDecreases": 0,
+  "validationIssues": 0
+}

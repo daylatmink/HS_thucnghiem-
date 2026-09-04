@@ -1,0 +1,23 @@
+{
+  "valid": true,
+  "issues": [],
+  "datasets": [
+    "msrcpsp_10_7_10_7",
+    "msrcpsp_100_20_512_10_A",
+    "msrcpsp_200_20_150_9_D5",
+    "msrcpsp_500_20_512_10_A"
+  ],
+  "algorithms": [
+    "GA",
+    "HS",
+    "Basic HS150-GA850",
+    "Skill-Guided HS150-GA850"
+  ],
+  "grid": "1..1000",
+  "checkpoints": [
+    250,
+    500,
+    750,
+    1000
+  ]
+}

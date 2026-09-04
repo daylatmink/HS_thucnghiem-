@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local checkpoints
+checkpoints/
+
+# Legacy project
+algrorithm/HS/
+
+# Internal documentation / planning
+algorithm_context_summary.md
+algorithm_report_methodology.md
+implementation_plan.md
+
+# Duplicate manifests
+dataset_manifest.csv
+dataset_manifest.md
+report_assets/dataset_manifest.csv
+report_assets/dataset_manifest.md
+
+# Optional local helper scripts
+build_main_algorithm_table.py
+generate_manifest.py
+
+# Old experiment outputs
+results/combined_benchmark_with_guided_mutation/
+results/guided_mutation_full_30runs/
+results/guided_mutation_screening/
+results/linkage_screening/
+results/objective_guided_mutation_screening/
+results/objective_guided_mutation_lite_screening/
+results/ta1_screening/
+results/ta3_skill_only/
+results/ta3_skill_only_full_30seed/
+results/benchmark_runs/
+results/benchmark_smoke*/
+
+# Large / redundant final result files
+results/final_benchmark/skill_guided_ta3_convergence_history.csv
+results/final_benchmark/final_benchmark_all_results.xlsx
+results/final_benchmark/final_benchmark_checkpoints.csv
+results/final_benchmark/final_benchmark_comparison.csv
+results/final_benchmark/final_benchmark_statistics.csv
+results/final_benchmark/final_benchmark_validation_report.csv
+
+# Redundant convergence artifacts
+results/convergence_analysis/curve_grid.csv
+results/convergence_analysis/validation_report.csv
+results/convergence_analysis/convergence_analysis.md
+results/convergence_analysis/convergence_100_20_512_10_A.png
+results/convergence_analysis/convergence_10_7_10_7.png
+results/convergence_analysis/convergence_200_20_150_9_D5.png
+results/convergence_analysis/convergence_500_20_512_10_A.png
+
+# Duplicate internal report docs
+report_assets/algorithm_context_summary.md
+report_assets/algorithm_report_methodology.md
