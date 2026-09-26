@@ -14,6 +14,7 @@ from hybrid_hs_ga import (
 )
 from harmony_search import HarmonySearchAssignmentOptimizer, coerce_hs_options
 from schedule import SchedulePreprocessor
+from skill_guided_ga import SkillGuidedGeneticAlgorithmAssignmentOptimizer
 
 
 def _clean(value: Any) -> str:
@@ -246,6 +247,7 @@ def run_from_csv(args: argparse.Namespace) -> dict[str, Any]:
         "hybrid_hs_ga": HybridHarmonySearchGAAssignmentOptimizer,
         "hybrid_hs_ga_guided_mutation": HybridHarmonySearchGuidedMutationGAAssignmentOptimizer,
         "ga": GeneticAlgorithmAssignmentOptimizer,
+        "skill_guided_ga": SkillGuidedGeneticAlgorithmAssignmentOptimizer,
     }[args.algorithm]
     result = optimizer_cls(
         tasks=tasks,
@@ -306,6 +308,7 @@ def build_parser() -> argparse.ArgumentParser:
             "hybrid_hs_ga",
             "hybrid_hs_ga_guided_mutation",
             "ga",
+            "skill_guided_ga",
         ],
         help="Optimizer to run.",
     )

@@ -60,3 +60,14 @@ results/convergence_analysis/convergence_500_20_512_10_A.png
 # Duplicate internal report docs
 report_assets/algorithm_context_summary.md
 report_assets/algorithm_report_methodology.md
+
+# Generated experiment outputs
+results/
+tmp/
+
+# Generated report images and documents
+report_assets/*.png
+report_assets/*.pdf
+
+# Local experiment plans
+alternative_experiment_scenarios.md

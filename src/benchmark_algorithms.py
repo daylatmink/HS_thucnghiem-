@@ -5,6 +5,7 @@ import csv
 import json
 import statistics
 import sys
+import time
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -16,6 +17,7 @@ DEFAULT_ALGORITHMS = "hs,ga,hybrid_hs_ga,hybrid_hs_ga_guided_mutation"
 STOCHASTIC_ALGORITHMS = {
     "hs",
     "ga",
+    "skill_guided_ga",
     "hybrid_hs_ga",
     "hybrid_hs_ga_guided_mutation",
     "random",
@@ -125,6 +127,42 @@ def run_to_raw_row(dataset: str, algorithm: str, seed: int, output: dict[str, An
         "observedObjectiveGuidanceRate": diagnostics.get("observedObjectiveGuidanceRate"),
         "guidanceScheduleBuildCount": diagnostics.get("guidanceScheduleBuildCount"),
     }
+
+
+def write_run_assignment(
+    output_dir: Path,
+    dataset: str,
+    algorithm: str,
+    seed: int,
+    output: dict[str, Any],
+) -> Path:
+    """Persist the best assignment of one benchmark run without re-evaluation."""
+    best = output["best"]
+    score = best["score"]
+    diagnostics = score.get("diagnostics") or {}
+    actual_schedule = diagnostics.get("actualSchedule") or {}
+    assignment = best.get("assignment") or {}
+    rows = []
+    for task_id, resource_id in assignment.items():
+        schedule_item = actual_schedule.get(task_id) or {}
+        rows.append(
+            {
+                "dataset": dataset,
+                "algorithm": algorithm,
+                "seed": seed,
+                "taskId": task_id,
+                "resourceId": resource_id,
+                "rawStartHour": schedule_item.get("plannedStartHour"),
+                "rawEndHour": schedule_item.get("plannedEndHour"),
+                "durationHours": schedule_item.get("durationHours"),
+                "totalScore": score.get("totalScore"),
+                "feasible": score.get("feasible"),
+            }
+        )
+    rows.sort(key=lambda row: (float(row["rawStartHour"] or 0.0), str(row["taskId"])))
+    path = output_dir / "assignments" / algorithm / dataset / f"seed_{seed}.csv"
+    write_csv(path, rows)
+    return path
 
 
 def convergence_rows(dataset: str, algorithm: str, seed: int, output: dict[str, Any]) -> list[dict[str, Any]]:
@@ -382,10 +420,34 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str] | No
     path.parent.mkdir(parents=True, exist_ok=True)
     if fieldnames is None:
         fieldnames = list(rows[0]) if rows else []
-    with path.open("w", encoding="utf-8-sig", newline="") as file:
+    with open_csv_with_retry(path, "w") as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def append_csv(path: Path, rows: list[dict[str, Any]], write_header: bool) -> None:
+    if not rows:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    mode = "w" if write_header else "a"
+    with open_csv_with_retry(path, mode) as file:
+        writer = csv.DictWriter(file, fieldnames=list(rows[0]))
+        if write_header:
+            writer.writeheader()
+        writer.writerows(rows)
+
+
+def open_csv_with_retry(path: Path, mode: str, attempts: int = 8):
+    """Open a benchmark CSV, retrying transient Windows file-handle errors."""
+    for attempt in range(attempts):
+        try:
+            return path.open(mode, encoding="utf-8-sig", newline="")
+        except OSError:
+            if attempt + 1 >= attempts:
+                raise
+            time.sleep(0.05 * (2**attempt))
+    raise RuntimeError("unreachable")
 
 
 def summarize(raw_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -565,6 +627,11 @@ def main() -> None:
         help="Comma-separated NFE shares for HS->GA hybrids. Example: 0.1,0.15,0.2.",
     )
     parser.add_argument("--skip-validation", action="store_true", help="Skip benchmark CSV invariant validation.")
+    parser.add_argument(
+        "--save-assignments",
+        action="store_true",
+        help="Write the best task-resource assignment from every run under output-dir/assignments.",
+    )
     args = parser.parse_args()
 
     examples_dir = Path(args.examples_dir)
@@ -579,6 +646,7 @@ def main() -> None:
 
     raw_rows: list[dict[str, Any]] = []
     history_rows: list[dict[str, Any]] = []
+    history_file_started = False
     for dataset_dir in datasets:
         for algorithm in algorithms:
             ratios = hybrid_hs_ratios if algorithm in {"hybrid_hs_ga", "hybrid_hs_ga_guided_mutation"} else [args.hybrid_hs_ratio]
@@ -588,9 +656,17 @@ def main() -> None:
                     print(f"run dataset={dataset_dir.name} algorithm={label} seed={seed}", flush=True)
                     output = run_from_csv(build_run_args(dataset_dir, algorithm, seed, args, hybrid_hs_ratio))
                     raw_rows.append(run_to_raw_row(dataset_dir.name, label, seed, output))
-                    history_rows.extend(convergence_rows(dataset_dir.name, label, seed, output))
+                    if args.save_assignments:
+                        write_run_assignment(output_dir, dataset_dir.name, label, seed, output)
+                    new_history_rows = convergence_rows(dataset_dir.name, label, seed, output)
+                    history_rows.extend(new_history_rows)
                     write_csv(output_dir / "raw_results.csv", raw_rows)
-                    write_csv(output_dir / "convergence_history.csv", history_rows)
+                    append_csv(
+                        output_dir / "convergence_history.csv",
+                        new_history_rows,
+                        write_header=not history_file_started,
+                    )
+                    history_file_started = True
                     write_csv(output_dir / "summary_results.csv", summarize(raw_rows))
 
     if not args.skip_validation:

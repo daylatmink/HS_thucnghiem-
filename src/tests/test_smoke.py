@@ -15,6 +15,7 @@ from hybrid_hs_ga import (  # noqa: E402
     HybridHarmonySearchGuidedMutationGAAssignmentOptimizer,
 )
 from models import OptimizerOptions, TaskSchedule  # noqa: E402
+from skill_guided_ga import SkillGuidedGeneticAlgorithmAssignmentOptimizer  # noqa: E402
 
 
 def make_evaluator() -> AssignmentEvaluator:
@@ -75,6 +76,7 @@ class ColabSmokeTests(unittest.TestCase):
         optimizer_classes = [
             HarmonySearchAssignmentOptimizer,
             GeneticAlgorithmAssignmentOptimizer,
+            SkillGuidedGeneticAlgorithmAssignmentOptimizer,
             HybridHarmonySearchGAAssignmentOptimizer,
             HybridHarmonySearchGuidedMutationGAAssignmentOptimizer,
         ]
@@ -101,6 +103,41 @@ class ColabSmokeTests(unittest.TestCase):
                 self.assertEqual({"T1", "T2"}, set(result.best.assignment))
                 self.assertGreaterEqual(result.best.score.total_score, 0.0)
                 self.assertLessEqual(result.best.score.total_score, 100.0)
+
+    def test_skill_guided_ga_matches_baseline_initial_population(self) -> None:
+        options = OptimizerOptions(
+            population_size=4,
+            max_iterations=100,
+            max_evaluations=20,
+            fixed_budget=True,
+            seed=11,
+        )
+        baseline_evaluator = make_evaluator()
+        guided_evaluator = make_evaluator()
+        baseline = GeneticAlgorithmAssignmentOptimizer(
+            baseline_evaluator.tasks,
+            baseline_evaluator.resources,
+            baseline_evaluator,
+            options,
+        )
+        guided = SkillGuidedGeneticAlgorithmAssignmentOptimizer(
+            guided_evaluator.tasks,
+            guided_evaluator.resources,
+            guided_evaluator,
+            options,
+        )
+
+        baseline_population = baseline._initial_population()
+        guided_population = guided._initial_population()
+
+        self.assertEqual(
+            [candidate.assignment for candidate in baseline_population],
+            [candidate.assignment for candidate in guided_population],
+        )
+        self.assertEqual(
+            [candidate.score.total_score for candidate in baseline_population],
+            [candidate.score.total_score for candidate in guided_population],
+        )
 
 
 if __name__ == "__main__":

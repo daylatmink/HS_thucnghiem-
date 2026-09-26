@@ -1,0 +1,41 @@
+diff --git a/optimizer/src/method/methods/MO/AMOMethod.h b/optimizer/src/method/methods/MO/AMOMethod.h
+index 0c5caa7..ca82e04 100644
+--- a/optimizer/src/method/methods/MO/AMOMethod.h
++++ b/optimizer/src/method/methods/MO/AMOMethod.h
+@@ -15,5 +15,36 @@ protected:
+         std::ostringstream oss;
+         CCSV<float>::ToCSV(oss, ArchiveUtils::ToEvaluation(archive));
+         CExperimentLogger::LogResult(oss.str().c_str());
++
++        std::ostringstream solutions;
++        solutions << "solutionId;evaluation;floatGenotype;intGenotype;boolGenotype\n";
++        for (size_t solutionId = 0; solutionId < archive.size(); ++solutionId)
++        {
++            const SMOIndividual* individual = archive[solutionId];
++            solutions << solutionId << ";";
++            WriteVector(solutions, individual->m_Evaluation);
++            solutions << ";";
++            WriteVector(solutions, individual->m_Genotype.m_FloatGenotype);
++            solutions << ";";
++            WriteVector(solutions, individual->m_Genotype.m_IntGenotype);
++            solutions << ";";
++            WriteVector(solutions, individual->m_Genotype.m_BoolGenotype);
++            solutions << "\n";
++        }
++        CExperimentLogger::LogResult(solutions.str().c_str(), "pareto_solutions.csv");
++    }
++
++private:
++    template<typename T>
++    static void WriteVector(std::ostringstream& output, const std::vector<T>& values)
++    {
++        for (size_t index = 0; index < values.size(); ++index)
++        {
++            if (index > 0)
++            {
++                output << " ";
++            }
++            output << values[index];
++        }
+     }
+ };
