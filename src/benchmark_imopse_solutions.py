@@ -218,6 +218,18 @@ def _dataset_context(dataset_dir: Path, strategy: str) -> tuple[list[dict[str, A
     return tasks, resources, evaluator
 
 
+def resolve_dataset_dir(datasets_dir: Path, source_dataset: str, metadata: dict[str, Any]) -> Path:
+    candidates = []
+    configured = str(metadata.get("datasetDirectory", "")).strip()
+    if configured:
+        candidates.append(datasets_dir / configured)
+    candidates.extend((datasets_dir / source_dataset, datasets_dir / f"msrcpsp_{source_dataset}"))
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate
+    raise ValueError(f"missing dataset; checked: {', '.join(str(path) for path in candidates)}")
+
+
 def benchmark(args: argparse.Namespace) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     solutions_root = Path(args.solutions_root)
     datasets_dir = Path(args.datasets_dir)
@@ -235,16 +247,13 @@ def benchmark(args: argparse.Namespace) -> tuple[list[dict[str, Any]], list[dict
             issues.append({"algorithm": native_algorithm, "sourceDataset": source_dataset, "seed": seed, "issue": "duplicate run"})
             continue
         seen.add(run_key)
-        dataset_dir = datasets_dir / f"msrcpsp_{source_dataset}"
-        if not dataset_dir.exists():
-            issues.append({"algorithm": native_algorithm, "sourceDataset": source_dataset, "seed": seed, "issue": f"missing dataset {dataset_dir}"})
-            continue
         try:
+            metadata_path = path.parent.parent / "native_run_metadata.json"
+            metadata = json.loads(metadata_path.read_text(encoding="utf-8-sig")) if metadata_path.exists() else {}
+            dataset_dir = resolve_dataset_dir(datasets_dir, source_dataset, metadata)
             tasks, resources, evaluator = _dataset_context(dataset_dir, args.strategy)
             pools = build_candidate_pools(tasks, resources)
             native_solutions = read_native_solutions(path)
-            metadata_path = path.parent.parent / "native_run_metadata.json"
-            metadata = json.loads(metadata_path.read_text(encoding="utf-8-sig")) if metadata_path.exists() else {}
             if not native_solutions:
                 raise ValueError("empty Pareto front")
             run_rows = []

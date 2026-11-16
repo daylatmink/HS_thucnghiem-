@@ -18,6 +18,7 @@ class OptimizerOptions:
     max_evaluations: int | None = None
     fixed_budget: bool = False
     convergence_threshold: float = 0.001
+    stagnation_evaluations: int | None = None
     population_size: int = 50
     crossover_rate: float = 0.8
     mutation_rate: float = 0.05
@@ -86,3 +87,5 @@ class OptimizationResult:
     converged: bool
     started_at: datetime
     finished_at: datetime
+    stopping_reason: str | None = None
+    last_improvement_evaluation: int | None = None

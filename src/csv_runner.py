@@ -264,6 +264,7 @@ def run_from_csv(args: argparse.Namespace) -> dict[str, Any]:
                 "timeout": args.timeout,
                 "maxEvaluations": getattr(args, "max_evaluations", None),
                 "fixedBudget": getattr(args, "fixed_budget", False),
+                "stagnationEvaluations": getattr(args, "stagnation_evaluations", None),
                 "populationSize": args.population_size,
                 "crossoverRate": args.crossover_rate,
                 "mutationRate": args.mutation_rate,
@@ -283,6 +284,9 @@ def run_from_csv(args: argparse.Namespace) -> dict[str, Any]:
         "objectiveEvaluations": evaluator.objective_evaluations,
         "evaluationAtBest": result.best.score.diagnostics.get("objectiveEvaluation"),
         "converged": result.converged,
+        "stoppingReason": result.stopping_reason,
+        "lastImprovementEvaluation": result.last_improvement_evaluation,
+        "stagnationEvaluations": getattr(args, "stagnation_evaluations", None),
         "startedAt": result.started_at.isoformat(),
         "finishedAt": result.finished_at.isoformat(),
         "runtime": runtime_diagnostics(result),
@@ -302,7 +306,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run assignment optimizer from CSV files.")
     parser.add_argument(
         "--algorithm",
-        default="hs",
+        default="ga",
         choices=[
             "hs",
             "hybrid_hs_ga",
@@ -330,6 +334,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--fixed-budget",
         action="store_true",
         help="Record convergence but continue stochastic optimizers until max evaluations is exhausted.",
+    )
+    parser.add_argument(
+        "--stagnation-evaluations",
+        type=int,
+        default=None,
+        help="Stop supported optimizers after this many NFE without a meaningful best-score improvement.",
     )
     parser.add_argument("--population-size", type=int, default=50)
     parser.add_argument("--crossover-rate", type=float, default=0.8)

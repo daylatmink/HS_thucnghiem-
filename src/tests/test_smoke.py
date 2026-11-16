@@ -139,6 +139,36 @@ class ColabSmokeTests(unittest.TestCase):
             [candidate.score.total_score for candidate in guided_population],
         )
 
+    def test_ga_optimizers_stop_after_nfe_stagnation(self) -> None:
+        optimizer_classes = [
+            GeneticAlgorithmAssignmentOptimizer,
+            HybridHarmonySearchGAAssignmentOptimizer,
+            SkillGuidedGeneticAlgorithmAssignmentOptimizer,
+            HybridHarmonySearchGuidedMutationGAAssignmentOptimizer,
+        ]
+        for optimizer_class in optimizer_classes:
+            with self.subTest(optimizer=optimizer_class.__name__):
+                evaluator = make_evaluator()
+                result = optimizer_class(
+                    evaluator.tasks,
+                    evaluator.resources,
+                    evaluator,
+                    OptimizerOptions(
+                        harmony_memory_size=3,
+                        population_size=4,
+                        max_iterations=1000,
+                        max_evaluations=100,
+                        stagnation_evaluations=8,
+                        hybrid_hs_ratio=0.1,
+                        seed=17,
+                    ),
+                ).run()
+
+                self.assertTrue(result.converged)
+                self.assertLess(evaluator.objective_evaluations, 100)
+                self.assertEqual("nfe_stagnation", result.stopping_reason)
+                self.assertIsNotNone(result.last_improvement_evaluation)
+
 
 if __name__ == "__main__":
     unittest.main()

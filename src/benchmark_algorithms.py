@@ -13,14 +13,13 @@ from typing import Any
 from csv_runner import run_from_csv
 
 
-DEFAULT_ALGORITHMS = "hs,ga,hybrid_hs_ga,hybrid_hs_ga_guided_mutation"
+DEFAULT_ALGORITHMS = "ga,skill_guided_ga,hybrid_hs_ga,hybrid_hs_ga_guided_mutation"
 STOCHASTIC_ALGORITHMS = {
     "hs",
     "ga",
     "skill_guided_ga",
     "hybrid_hs_ga",
     "hybrid_hs_ga_guided_mutation",
-    "random",
 }
 
 
@@ -85,6 +84,7 @@ def build_run_args(
         max_iterations=args.max_iterations,
         max_evaluations=args.max_evaluations,
         fixed_budget=args.fixed_budget,
+        stagnation_evaluations=args.stagnation_evaluations,
         top_candidates=args.top_candidates,
         seed=seed,
         timeout=args.timeout,
@@ -122,6 +122,9 @@ def run_to_raw_row(dataset: str, algorithm: str, seed: int, output: dict[str, An
         "iterations": output.get("iterationsRun"),
         "runtimeSeconds": runtime.get("durationSeconds"),
         "converged": output.get("converged"),
+        "stoppingReason": output.get("stoppingReason"),
+        "lastImprovementEvaluation": output.get("lastImprovementEvaluation"),
+        "stagnationEvaluations": output.get("stagnationEvaluations"),
         "objectiveGuidanceCount": diagnostics.get("objectiveGuidanceCount"),
         "skillGuidanceCount": diagnostics.get("skillGuidanceCount"),
         "observedObjectiveGuidanceRate": diagnostics.get("observedObjectiveGuidanceRate"),
@@ -603,6 +606,12 @@ def main() -> None:
         "--fixed-budget",
         action="store_true",
         help="Do not stop stochastic optimizers early on convergence before max evaluations.",
+    )
+    parser.add_argument(
+        "--stagnation-evaluations",
+        type=int,
+        default=None,
+        help="Stop GA phases after this many NFE without meaningful incumbent improvement.",
     )
     parser.add_argument("--max-iterations", type=int, default=100000)
     parser.add_argument("--timeout", type=float)

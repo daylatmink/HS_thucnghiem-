@@ -62,6 +62,9 @@ def coerce_hs_options(options: dict[str, Any] | None) -> OptimizerOptions:
         max_evaluations=int_option("maxEvaluations", "max_evaluations", default=0) or None,
         fixed_budget=bool_option("fixedBudget", "fixed_budget", default=False),
         convergence_threshold=float_option("convergenceThreshold", 0.001, 0.0),
+        stagnation_evaluations=int_option(
+            "stagnationEvaluations", "stagnation_evaluations", default=0
+        ) or None,
         population_size=int_option("populationSize", default=50),
         crossover_rate=float_option("crossoverRate", 0.8, 0.0, 1.0),
         mutation_rate=float_option("mutationRate", 0.05, 0.0, 1.0),

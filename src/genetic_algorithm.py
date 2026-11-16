@@ -56,7 +56,12 @@ class GeneticAlgorithmAssignmentOptimizer:
         )
         previous_best_score = best.score.total_score
         stagnant_generations = 0
+        last_improvement_evaluation = int(
+            best.score.diagnostics.get("objectiveEvaluation")
+            or self.evaluator.objective_evaluations
+        )
         converged = False
+        stopping_reason = None
         iterations_run = 0
 
         for generation in range(1, self.options.max_iterations + 1):
@@ -70,12 +75,27 @@ class GeneticAlgorithmAssignmentOptimizer:
                 best = population[0]
 
             improvement = best.score.total_score - previous_best_score
-            if abs(improvement) < self.options.convergence_threshold:
-                stagnant_generations += 1
-            else:
+            if improvement >= self.options.convergence_threshold:
                 stagnant_generations = 0
                 previous_best_score = best.score.total_score
-            if stagnant_generations >= max(25, self.options.population_size):
+                last_improvement_evaluation = int(
+                    best.score.diagnostics.get("objectiveEvaluation")
+                    or self.evaluator.objective_evaluations
+                )
+            else:
+                stagnant_generations += 1
+
+            stagnation_evaluations = self.options.stagnation_evaluations
+            if stagnation_evaluations is not None:
+                if (
+                    self.evaluator.objective_evaluations - last_improvement_evaluation
+                    >= stagnation_evaluations
+                ):
+                    converged = True
+                    stopping_reason = "nfe_stagnation"
+                    iterations_run = generation
+                    break
+            elif stagnant_generations >= max(25, self.options.population_size):
                 converged = True
                 iterations_run = generation
                 if not self.options.fixed_budget:
@@ -114,6 +134,8 @@ class GeneticAlgorithmAssignmentOptimizer:
             converged=converged,
             started_at=started,
             finished_at=datetime.now(timezone.utc),
+            stopping_reason=stopping_reason,
+            last_improvement_evaluation=last_improvement_evaluation,
         )
 
     def _ordered_task_ids(self) -> list[str]:
